@@ -1,0 +1,21 @@
+body{
+    background-color: black;
+}
+h1{
+    color: white;
+}
+ul{
+    width: 10%;
+    background-color: white;
+    border-radius: 5px;
+    margin-left: 10px;
+}
+a:link, a:visited, a:active {
+    text-decoration:none;
+}
+li,a{
+    color: rgb(128, 128, 128);
+    font-style: normal;
+    font-size: 25px;
+    text-decoration: underline gray;
+}

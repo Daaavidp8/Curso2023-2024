@@ -1,0 +1,31 @@
+body{
+    background-color: chocolate;
+    display: flex;
+    flex-flow: wrap;
+    height: 90vh;
+    align-items: center;
+    justify-content: center;
+}
+fieldset{
+    display: flex;
+}
+p{
+    display: flex;
+    background-color: #000000;
+    color: chocolate;
+    width: 15vh;
+    height: 15vh;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    border-radius: 5px;
+    border: white solid 1px;
+    transition: 0.5s;
+}
+
+p:hover{
+    width: 16vh;
+    height: 16vh;
+    font-weight: bold;
+    font-size: 2em;
+}

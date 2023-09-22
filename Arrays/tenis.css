@@ -1,0 +1,25 @@
+body{
+    display: flex;
+    background-color: #008900;
+    justify-content: center;
+}
+table,tr,td,th{
+    border: white solid 2px;
+    border-collapse: collapse;
+    text-align: center;
+}
+fieldset{
+    display: flex;
+    margin-top: 20px;
+}
+table{
+    margin: 10px;
+}
+th{
+    padding: 3px;
+}
+
+td{
+    width: 3vh;
+    padding: 3px;
+}

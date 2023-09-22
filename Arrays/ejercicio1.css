@@ -1,0 +1,33 @@
+ul,li{
+    list-style: none;
+}
+li:before{
+    content: '🙂 ';
+}
+body{
+    display: flex;
+    justify-content: center;
+}
+ul{
+    padding: 10px;
+    background-color: black;
+    width: 150vh;
+    height: 100vh;
+    display: flex;
+    flex-flow: wrap;
+    border-radius: 5px;
+    justify-content: center;
+}
+li{
+    display: flex;
+    margin: 3px;
+    background-color: purple;
+    width: 8vh;
+    height: 8vh;
+    border-radius: 3px;
+    align-items: center;
+    justify-content: center;
+}
+p{
+    color: white;
+}
