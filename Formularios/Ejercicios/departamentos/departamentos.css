@@ -1,0 +1,30 @@
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+}
+table,tr,td,th{
+    border: black solid 2px;
+    border-collapse: collapse;
+}
+table{
+    text-align: center;
+}
+td,th{
+    padding: 10px;
+}
+a{
+    all: unset;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin-top: 10px;
+    width: 6vh;
+    height: 4vh;
+    background-color: #555555;
+    border-radius: 3px;
+    padding: 5px;
+    border: black solid 1px;
+}
