@@ -1,0 +1,36 @@
+body{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+fieldset {
+    border:1px solid rgb(128, 128, 128);
+}
+legend {
+    padding: 0.2em 0.5em;
+    color: rgb(128, 128, 128);
+    font-size: 90%;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+}
+legend:before {
+    position: absolute;
+    content: '';
+    height: 8px;
+    border-left: 1px solid rgb(128, 128, 128);
+    left: 0;
+    top: 7px;
+}
+legend:after {
+    position: absolute;
+    content: '';
+    height: 8px;
+    border-right: 1px solid rgb(128, 128, 128);
+    right: 0;
+    top: 7px;
+}
+
+
