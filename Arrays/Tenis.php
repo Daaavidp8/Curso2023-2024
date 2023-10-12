@@ -8,6 +8,7 @@
 //3. Simular un partido de tenis: utilizando la función random para que vaya dandole los puntos de
 // manera aleatoria a cada jugador.
 
+
 $jugadores = [0,0];
 $puntos = [0,15,30,40];
 $juegos = [0,0];
