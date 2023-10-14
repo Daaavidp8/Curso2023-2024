@@ -2,5 +2,5 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Ejercicios Arrays</title>
+    <title>$Title$</title>
 </head>

@@ -1,0 +1,21 @@
+body{
+    display: flex;
+    height: 90vh;
+    justify-content: center;
+    align-items: center;
+    background-color: #00f000;
+}
+
+div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    color: white;
+    padding: 25px;
+    border-radius: 5px;
+}
+b{
+    font-size: 1.5em;
+}
