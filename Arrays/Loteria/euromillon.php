@@ -1,4 +1,7 @@
 <?php include "./cabecera.inc"?>
+<?php
+
+?>
 <?php include "./loteria.inc" ?>
 
 <div>
