@@ -3,10 +3,15 @@
 class Vehiculo
 {
     private $velocidad;
+    private $marca;
+    private $modelo;
 
-    public function __construct($fvelocidad = 1)
+
+    public function __construct($fvelocidad,$fmarca,$fmodelo = "")
     {
         $this->setVelocidad($fvelocidad);
+        $this->setMarca($fmarca);
+        $this->setModelo($fmodelo);
     }
 
     public function getVelocidad()
@@ -19,9 +24,29 @@ class Vehiculo
         $this->velocidad = $velocidad;
     }
 
+    public function getMarca()
+    {
+        return $this->marca;
+    }
+
+    public function setMarca($marca)
+    {
+        $this->marca = $marca;
+    }
+
+    public function getModelo()
+    {
+        return $this->modelo;
+    }
+
+    public function setModelo($modelo)
+    {
+        $this->modelo = $modelo;
+    }
+
     public function aumentarVelocidad($fnum)
     {
-        $this->velocidad += $fnum;
+        $this->setVelocidad($this->getVelocidad() + $fnum);
     }
 
 
@@ -29,13 +54,15 @@ class Vehiculo
     {
         if ($fnum < $this->velocidad)
         {
-            $this->velocidad -= $fnum;
+            $this->setVelocidad($this->getVelocidad() - $fnum);
         }
     }
 
-    public function velocidadMaxima($fnum)
+    public function velocidadMaxima($fvaribleVelocidad)
     {
-        $this->setVelocidad($fnum);
+            return "<p>El " . $this->getMarca() . " " . $this->getModelo() .  " corriendo a " .
+                ($this->getVelocidad()) . " KM " . ($fvaribleVelocidad ? "(disminuyendo velocidad)" : "(aumentando velocidad)") . "</p>";
+
     }
 }
 

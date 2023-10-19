@@ -1,13 +1,13 @@
 <?php
-include "./Terrestre.php";
+include_once "./Terrestre.php";
 
 class Carro extends Terrestre
 {
     private $numPuertas,$encendido;
 
-    public function __construct($fvelocidad,$numPuertas = 1,$encendido = false)
+    public function __construct($fvelocidad,$fmarca,$fmodelo,$numPuertas = 1,$encendido = false)
     {
-        parent::__construct($fvelocidad);
+        parent::__construct($fvelocidad,$fmarca,$fmodelo);
         $this->setNumPuertas($numPuertas);
         $this->setEncendido($encendido);
     }
@@ -38,7 +38,11 @@ class Carro extends Terrestre
 
     }
 
-    public function encenderOApagar(){
-        $this->setEncendido(!$this->getEncendido());
+    public function apagar(){
+        $this->setEncendido(false);
+    }
+
+    public function encender(){
+        $this->setEncendido(true);
     }
 }

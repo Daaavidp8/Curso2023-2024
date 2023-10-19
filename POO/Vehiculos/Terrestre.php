@@ -1,15 +1,15 @@
 <?php
-include "./Vehiculo.php";
+include_once "./Vehiculo.php";
 class Terrestre extends Vehiculo
 {
-    public function __construct($fvelocidad)
+    public function __construct($fvelocidad,$fmarca,$fmodelo)
     {
-        parent::__construct($fvelocidad);
+        parent::__construct($fvelocidad,$fmarca,$fmodelo);
     }
 
     public function pasarBache()
     {
-        echo "Has pasado un bache";
+        return "Has pasado un bache";
     }
 
     public function frenar()
