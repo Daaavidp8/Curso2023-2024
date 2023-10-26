@@ -6,7 +6,7 @@ class Moto extends Terrestre
 {
     private $numPuertas,$encendido;
 
-    public function __construct($fvelocidad,$fmarca,$fmodelo,$numPuertas = 1,$encendido = false)
+    public function __construct($fvelocidad,$fmarca,$fmodelo,$encendido = false,$numPuertas = 1)
     {
         parent::__construct($fvelocidad,$fmarca,$fmodelo);
         $this->setNumPuertas($numPuertas);

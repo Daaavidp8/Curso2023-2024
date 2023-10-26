@@ -17,7 +17,7 @@ class Bicicleta extends Terrestre
 
     public function setPedaleando($pedaleando)
     {
-        if ($pedaleando === true || $pedaleando === false)
+        if ($pedaleando == true || $pedaleando == false)
         {
             $this->pedaleando = $pedaleando;
         }
