@@ -46,7 +46,6 @@ try {
 
 
 if (isset($_REQUEST['submit'])){
-    echo "entra";
     $insert = $pdo->prepare("SELECT * FROM Videojuegos");
     try {
         $insert->execute();
