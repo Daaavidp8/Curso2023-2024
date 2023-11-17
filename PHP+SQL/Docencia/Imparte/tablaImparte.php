@@ -96,7 +96,7 @@ if (isset($_REQUEST['add'])){
     <input type="submit" value="Añadir Imparticion" name="add">
 </form>
 
-<a href="./tablaAsignaturas.php">Anterior</a>
-<a href="./index.php">Siguiente</a>
+<a href="../Asignaturas/tablaAsignaturas.php">Anterior</a>
+<a href="../Profesores/index.php">Siguiente</a>
 </body>
 </html>

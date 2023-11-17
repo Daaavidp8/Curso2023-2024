@@ -74,7 +74,7 @@ if (isset($_REQUEST['add'])){
 </form>
 
 
-<a href="./index.php">Anterior</a>
-<a href="./tablaImparte.php">Siguiente</a>
+<a href="../Profesores/index.php">Anterior</a>
+<a href="../Imparte/tablaImparte.php">Siguiente</a>
 </body>
 </html>
