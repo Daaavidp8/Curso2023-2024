@@ -16,8 +16,7 @@ $password = "";
 $pdo = new PDO("mysql:host=$host;dbname=$nombreBD;charset=utf8",$usuario,$password);
 
 if (isset($_REQUEST['add'])){
-    $insert = $pdo->prepare("INSERT INTO asignaturas(codigo,descripcion,creditos,creditosp)" .
-        " VALUES(:codigo, :descripcion, :creditos, :creditosp)");
+
 
 
     $codigo = strtoupper($_REQUEST['codigo']);
