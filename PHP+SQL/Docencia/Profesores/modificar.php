@@ -27,7 +27,10 @@ if (isset($_REQUEST['modificar'])){
 
 if (isset($_REQUEST['valores'])){
 
-    $valores = explode(",", $_REQUEST['valores']);?>
+    $valores = explode(",", $_REQUEST['valores']);
+    ?>
+
+
 
     <h1 class="display-4">Tabla Modificar Tabla Profesores</h1>
 

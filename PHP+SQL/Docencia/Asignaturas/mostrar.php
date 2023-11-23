@@ -6,7 +6,7 @@
     <!-- Add Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
-<body>
+<body class="container mt-5">
 <?php
 include_once "Asignaturas.php";
 ini_set("display_errors",1);
@@ -30,6 +30,7 @@ try {
             <th>Descripcion</th>
             <th>Creditos</th>
             <th>Creditosp</th>
+            <th>Acciones</th>
         </tr>
         </thead>
         <tbody>
@@ -53,18 +54,20 @@ try {
         <?php
         foreach($consulta as $registro){
             echo "<tr>";
-            echo "<td>" . $registro['codigo'] . "</td>";
-            echo "<td>" . $registro['descripcion'] . "</td>";
-            echo "<td>" . ($registro['creditos'] === null ? 0.0 : $registro['creditos']). "</td>";
-            echo "<td>" . ($registro['creditosp'] === null ? "0.0" : $registro['creditosp']) . "</td>";
-            echo "<td>";
-            echo "<a href='./eliminar.php?codigo=" . $registro['codigo'] . "' class='btn btn-danger' style='color: white'>Borrar</a>";
+            echo    "<td>" . $registro['codigo'] . "</td>";
+            echo    "<td>" . $registro['descripcion'] . "</td>";
+            echo    "<td>" . ($registro['creditos'] === null ? 0.0 : $registro['creditos']). "</td>";
+            echo    "<td>" . ($registro['creditosp'] === null ? "0.0" : $registro['creditosp']) . "</td>";
+            echo    "<td>";
+            echo        "<div class='d-flex justify-content-center'>";
+            echo            "<a href='./eliminar.php?codigo=" . $registro['codigo'] . "' class='btn btn-danger mr-2' style='color: white'>Borrar</a>";
 
             $valores = [$registro['codigo'], $registro['descripcion'], $registro['creditos'], $registro['creditosp']];
             $valores = implode(",", $valores);
 
-            echo "<a href='./modificar.php?valores=" . $valores . "' class='btn btn-primary' style='color: white'>Modificar</a>";
-            echo "</td>";
+            echo            "<a href='./modificar.php?valores=" . $valores . "' class='btn btn-primary' style='color: white'>Modificar</a>";
+            echo        "</div>";
+            echo    "</td>";
             echo "</tr>";
         }
         ?>
@@ -77,6 +80,11 @@ try {
         </div>
     <?php }
     ?>
+    <div class="d-flex justify-content-center">
+        <a href="../Profesores/mostrar.php" class="btn btn-outline-primary mr-5">Anterior</a>
+        <a href="../Imparte/mostrar.php" class="btn btn-outline-primary ml-5">Siguiente</a>
+    </div>
+
 </form>
 </body>
 </html>
