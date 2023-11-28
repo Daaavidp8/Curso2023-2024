@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Tu Título</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./index.css">
 </head>
 <body>
 <?php
@@ -29,17 +30,31 @@ $password = "";
 $pdo = new PDO("mysql:host=$host;dbname=$nombreBD;charset=utf8", $usuario, $password);
 
 if (isset($_REQUEST['modificarDatabase'])) {
-    $modificar = $pdo->prepare("UPDATE video SET Titulo=:titulo,Genero=:genero,Any=:any,Precio=:precio WHERE id=:id");
 
-    $modificar->bindParam(':id', $_REQUEST['id']);
-    $modificar->bindParam(':titulo', $_REQUEST['titulo']);
-    $modificar->bindParam(':genero', $_REQUEST['genero']);
-    $modificar->bindParam(':any', $_REQUEST['any']);
-    $modificar->bindParam(':precio', $_REQUEST['precio']);
+    if ($_SERVER['REQUEST_METHOD'] == "POST") {
+        if (is_uploaded_file($_FILES['caratula']['tmp_name'])) {
+            $nombreDirectorio = "/opt/lampp/htdocs/Curso2023-2024/PHP+SQL/peliculas/imagenes/";
+            $nombreFichero = $_FILES['caratula']['name'];
+            move_uploaded_file($_FILES['caratula']['tmp_name'], $nombreDirectorio . $nombreFichero);
+        } else {
+            echo "No se ha podido subir el fichero\n";
+        }
 
-    executeVar($modificar);
+    }
 
-    redirect();
+//    $modificar = $pdo->prepare("UPDATE video SET Titulo=:titulo,Genero=:genero,Any=:any,Precio=:precio WHERE id=:id");
+//
+//    $modificar->bindParam(':id', $_REQUEST['id']);
+//    $modificar->bindParam(':titulo', $_REQUEST['titulo']);
+//    $modificar->bindParam(':genero', $_REQUEST['genero']);
+//    $modificar->bindParam(':any', $_REQUEST['any']);
+//    $modificar->bindParam(':precio', $_REQUEST['precio']);
+//
+//    executeVar($modificar);
+//
+//    echo $_REQUEST['caratula'];
+
+//    redirect();
 }
 
 if (isset($_REQUEST['borrar'])) {
@@ -73,6 +88,12 @@ if (isset($_REQUEST['borrar'])) {
             <div class="mb-3">
                 <label for="precio" class="form-label">Precio:</label>
                 <input type="text" class="form-control" name="precio" value="<?php echo $valores[4] ?>">
+            </div>
+            <div class="mb-3">
+                <label class="custom-file">
+                    <input type="file" class="custom-file-input" name="caratula">
+                    <span class="custom-file-label"><div class="withoutFile">Sin imagen</div></span>
+                </label>
             </div>
             <button type="submit" class="btn btn-primary" name="modificarDatabase">Modificar</button>
         </form>
