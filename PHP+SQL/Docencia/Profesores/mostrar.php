@@ -58,7 +58,7 @@ try {
             echo "<td>" . $registro['categoria'] . "</td>";
             echo "<td>" . $registro['ingreso'] . "</td>";
             echo "<td>";
-            echo "<a href='./eliminar.php?dni=" . $registro['dni'] . "' class='btn btn-danger' style='color: white'>Borrar</a>";
+            echo "<a href='./eliminar.php?dni=" . $registro['dni'] . "' class='btn btn-danger mr-2' style='color: white'>Borrar</a>";
 
             $valores = [$registro['dni'], $registro['nombre'], $registro['categoria'], $registro['ingreso']];
             $valores = implode(",", $valores);
@@ -77,6 +77,9 @@ try {
             </div>
         <?php }
     ?>
+
+
+
 </form>
 
 <!-- Agregar Bootstrap JS y Popper.js -->
@@ -85,8 +88,10 @@ try {
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
 <!-- Bootstrap-styled links -->
-<a href="../Imparte/tablaImparte.php" class="btn btn-primary">Anterior</a>
-<a href="../Asignaturas/tablaAsignaturas.php" class="btn btn-primary">Siguiente</a>
+<div class="d-flex justify-content-center">
+    <a href="../Imparte/mostrar.php" class="btn btn-outline-primary mr-5">Anterior</a>
+    <a href="../Asignaturas/mostrar.php" class="btn btn-outline-primary ml-5">Siguiente</a>
+</div>
 
 </body>
 </html>
