@@ -10,6 +10,18 @@
 <?php
 ini_set('display_errors', 1);
 
+function anadirFicheroaLaCarpeta($fichero) {
+        if (is_uploaded_file($_FILES[$fichero]['tmp_name'])) {
+            $nombreDirectorio = "/opt/lampp/htdocs/Curso2023-2024/PHP+SQL/peliculas/imagenes/";
+            $nombreFichero = $_FILES[$fichero]['name'];
+            move_uploaded_file($_FILES[$fichero]['tmp_name'], $nombreDirectorio . $nombreFichero);
+            return "/Curso2023-2024/PHP+SQL/peliculas/imagenes/" . $nombreFichero;
+        } else {
+            return "sin ruta especificada";
+        }
+}
+
+
 function executeVar($variable) {
     try {
         $variable->execute();
@@ -31,30 +43,23 @@ $pdo = new PDO("mysql:host=$host;dbname=$nombreBD;charset=utf8", $usuario, $pass
 
 if (isset($_REQUEST['modificarDatabase'])) {
 
-    if ($_SERVER['REQUEST_METHOD'] == "POST") {
-        if (is_uploaded_file($_FILES['caratula']['tmp_name'])) {
-            $nombreDirectorio = "/opt/lampp/htdocs/Curso2023-2024/PHP+SQL/peliculas/imagenes/";
-            $nombreFichero = $_FILES['caratula']['name'];
-            move_uploaded_file($_FILES['caratula']['tmp_name'], $nombreDirectorio . $nombreFichero);
-        } else {
-            echo "No se ha podido subir el fichero\n";
-        }
+    $ruta = anadirFicheroaLaCarpeta('fichero');
 
-    }
 
-//    $modificar = $pdo->prepare("UPDATE video SET Titulo=:titulo,Genero=:genero,Any=:any,Precio=:precio WHERE id=:id");
-//
-//    $modificar->bindParam(':id', $_REQUEST['id']);
-//    $modificar->bindParam(':titulo', $_REQUEST['titulo']);
-//    $modificar->bindParam(':genero', $_REQUEST['genero']);
-//    $modificar->bindParam(':any', $_REQUEST['any']);
-//    $modificar->bindParam(':precio', $_REQUEST['precio']);
-//
-//    executeVar($modificar);
-//
-//    echo $_REQUEST['caratula'];
+    $modificar = $pdo->prepare("UPDATE video SET Titulo=:titulo,Genero=:genero,Any=:any,Precio=:precio,imagen=:caratula WHERE id=:id");
 
-//    redirect();
+    $modificar->bindParam(':id', $_REQUEST['id']);
+    $modificar->bindParam(':titulo', $_REQUEST['titulo']);
+    $modificar->bindParam(':genero', $_REQUEST['genero']);
+    $modificar->bindParam(':any', $_REQUEST['any']);
+    $modificar->bindParam(':precio', $_REQUEST['precio']);
+    $modificar->bindParam(':caratula', $ruta);
+
+    executeVar($modificar);
+
+    echo $_REQUEST['caratula'];
+
+    redirect();
 }
 
 if (isset($_REQUEST['borrar'])) {
@@ -71,7 +76,7 @@ if (isset($_REQUEST['borrar'])) {
     ?>
     <div class="container">
         <h2>Modificar Registro</h2>
-        <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
+        <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post" enctype="multipart/form-data">
             <input type="hidden" name="id" value="<?php echo $valores[0] ?>">
             <div class="mb-3">
                 <label for="titulo" class="form-label">Título:</label>
@@ -91,26 +96,34 @@ if (isset($_REQUEST['borrar'])) {
             </div>
             <div class="mb-3">
                 <label class="custom-file">
-                    <input type="file" class="custom-file-input" name="caratula">
-                    <span class="custom-file-label"><div class="withoutFile">Sin imagen</div></span>
+                    <input type="file" class="custom-file-input" name="fichero">
+                    <span class="custom-file-label">
+                        <?php
+                        echo $valores[5] != "" ? '<img src="' . $valores[5] . '" class="imagenes">' : '<div class="withoutFile">Sin imagen</div>' ?>
+                    </span>
                 </label>
             </div>
             <button type="submit" class="btn btn-primary" name="modificarDatabase">Modificar</button>
         </form>
     </div>
 <?php } elseif (isset($_REQUEST['insertar'])) {
-    $insertar = $pdo->prepare("INSERT INTO video(Titulo,Genero,Any,Precio) VALUES (:titulo, :genero, :any ,:precio)");
 
-    echo $_REQUEST['titulo'];
+//    $ruta = anadirFicheroaLaCarpeta($_REQUEST['']);
 
-    $insertar->bindParam(':titulo', $_REQUEST['titulo']);
-    $insertar->bindParam(':genero', $_REQUEST['genero']);
-    $insertar->bindParam(':any', $_REQUEST['any']);
-    $insertar->bindParam(':precio', $_REQUEST['precio']);
+    echo "<h1>" . $_REQUEST['caratula'] . "</h1>";
 
-    executeVar($insertar);
+//    $insertar = $pdo->prepare("INSERT INTO video(Titulo,Genero,Any,Precio) VALUES (:titulo, :genero, :any , :precio)");
+//
+//
+//    $insertar->bindParam(':titulo', $_REQUEST['titulo']);
+//    $insertar->bindParam(':genero', $_REQUEST['genero']);
+//    $insertar->bindParam(':any', $_REQUEST['any']);
+//    $insertar->bindParam(':precio', $_REQUEST['precio']);
+//    $insertar->bindParam(':caratula', $ruta);
 
-    redirect();
+//    executeVar($insertar);
+
+//    redirect();
 }
 ?>
 </body>

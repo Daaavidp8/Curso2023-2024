@@ -5,11 +5,6 @@
     <title>Tu Título</title>
 </head>
 <body>
-<form action="<?= $_SERVER['PHP_SELF'] ?>" method="post" enctype="multipart/form-data">
-
-    <input type="file" name="fichero" />
-    <input type="submit" name="enviar" value="enviar" />
-</form>
 <?php
 ini_set("display_errors",1);
 
@@ -25,6 +20,12 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 }
 ?>
+<form action="<?= $_SERVER['PHP_SELF'] ?>" method="post" enctype="multipart/form-data">
+
+    <input type="file" name="fichero" />
+    <input type="submit" name="enviar" value="enviar" />
+</form>
+
 </body>
 </html>
 

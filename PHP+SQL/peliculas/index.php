@@ -36,10 +36,14 @@ $pdo = new PDO("mysql:host=$host;dbname=$nombreBD;charset=utf8",$usuario,$passwo
             <td><input type="text" name="precio"></td>
             <td><label class="custom-file">
                     <input type="file" class="custom-file-input" name="caratula">
-                    <span class="custom-file-label"><button class="btn btn-outline-primary">Añadir Caratula</button></span>
+                    <span class="custom-file-label">
+                        <button class="btn btn-outline-primary">Añadir Caratula</button>
+                    </span>
                 </label>
             </td>
-            <td><button class="btn btn-success" name="insertar">Insertar</button></td>
+            <td>
+                <button class="btn btn-success" name="insertar">Insertar</button>
+            </td>
         </tr>
 
         <?php
@@ -49,29 +53,50 @@ $pdo = new PDO("mysql:host=$host;dbname=$nombreBD;charset=utf8",$usuario,$passwo
         } catch (Exception $error) {
             echo $error;
         }
-        while ($registro = $insert->fetch()) {
-            echo "<tr>";
-            echo "<td>" . $registro['id'] . "</td>";
-            echo "<td>" . $registro['Titulo'] . "</td>";
-            echo "<td>" . $registro['Genero'] . "</td>";
-            echo "<td>" . $registro['Any'] . "</td>";
-            echo "<td>" . $registro['Precio'] . "</td>";
-            echo '<td><label class="custom-file">
-                    <input type="file" class="custom-file-input" name="caratula">
-                    <span class="custom-file-label"><div class="withoutFile">Sin imagen</div></span>
-                </label>
-            </td>';
-            echo "<td><button type='submit' class='btn btn-danger' name='borrar' value='" . $registro['id'] . "'>Borrar</button>";
+        while ($registro = $insert->fetch()) {?>
+            <tr>
+                <td>
+                    <?=$registro['id']?>
+                </td>
 
-            $valores = [$registro['id'], $registro['Titulo'], $registro['Genero'], $registro['Any'], $registro['Precio']];
-            $valores = implode(",", $valores);
-            echo "<button type='submit' class='btn btn-primary' class='fileChange' name='modificar' value='" . $valores . "'>Modificar</button>";
-            echo "</td></tr>";
+                <td>
+                    <?=$registro['Titulo']?>
+                </td>
+
+                <td>
+                    <?=$registro['Genero']?>
+                </td>
+
+                <td>
+                    <?=$registro['Any']?>
+                </td>
+
+                <td>
+                    <?=$registro['Precio']?>
+                </td>
+
+                <td>
+                    <span class="custom-file-label">
+                        <?php echo $registro['imagen'] != "" ? '<img src="' . $registro['imagen'] . '" class="imagenes">' : '<div class="withoutFile">Sin imagen</div>' ?>
+                    </span>
+                </td>
+
+                <td>
+                    <button type='submit' class='btn btn-danger' name='borrar' value='<?=$registro['id']?>'>Borrar</button>
+                    <?php
+                    $valores = [$registro['id'], $registro['Titulo'], $registro['Genero'], $registro['Any'], $registro['Precio'], $registro['imagen']];
+                    $valores = implode(",", $valores);
+                    ?>
+                    <button type='submit' class='btn btn-primary' name='modificar' value='<?=$valores?>'>Modificar</button>
+                </td>
+
+            </tr>
+            <?php
         }
         ?>
     </table>
 </form>
-<a href="./llenarTabla.php">Llenar tabla</a>
+<a href="./llenarTabla.php">Restablecer Tabla</a>
 </body>
 </html>
 
