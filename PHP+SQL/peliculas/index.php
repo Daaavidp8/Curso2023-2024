@@ -30,19 +30,32 @@ $pdo = new PDO("mysql:host=$host;dbname=$nombreBD;charset=utf8",$usuario,$passwo
         </tr>
 
         <tr>
-            <td colspan="2"><input type="text" style="width: 98%" name="titulo"></td>
-            <td><input type="text" name="genero" style="width: 98%"></td>
-            <td><input type="text" name="any"></td>
-            <td><input type="text" name="precio"></td>
-            <td><label class="custom-file">
-                    <input type="file" class="custom-file-input" name="caratula">
+            <td colspan="2">
+                <input type="text" style="width: 98%" name="titulo">
+            </td>
+
+            <td>
+                <input type="text" name="genero" style="width: 98%">
+            </td>
+
+            <td>
+                <input type="text" name="any">
+            </td>
+
+            <td>
+                <input type="text" name="precio">
+            </td>
+
+            <td>
+                <label class="custom-file">
+                    <input type="file" name="caratula" class="custom-file-input">
                     <span class="custom-file-label">
                         <button class="btn btn-outline-primary">Añadir Caratula</button>
                     </span>
                 </label>
             </td>
             <td>
-                <button class="btn btn-success" name="insertar">Insertar</button>
+                <button type="submit" class="btn btn-success" name="insertar">Insertar</button>
             </td>
         </tr>
 

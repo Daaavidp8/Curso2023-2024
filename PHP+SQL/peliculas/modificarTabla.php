@@ -10,16 +10,6 @@
 <?php
 ini_set('display_errors', 1);
 
-function anadirFicheroaLaCarpeta($fichero) {
-        if (is_uploaded_file($_FILES[$fichero]['tmp_name'])) {
-            $nombreDirectorio = "/opt/lampp/htdocs/Curso2023-2024/PHP+SQL/peliculas/imagenes/";
-            $nombreFichero = $_FILES[$fichero]['name'];
-            move_uploaded_file($_FILES[$fichero]['tmp_name'], $nombreDirectorio . $nombreFichero);
-            return "/Curso2023-2024/PHP+SQL/peliculas/imagenes/" . $nombreFichero;
-        } else {
-            return "sin ruta especificada";
-        }
-}
 
 
 function executeVar($variable) {
@@ -108,22 +98,35 @@ if (isset($_REQUEST['borrar'])) {
     </div>
 <?php } elseif (isset($_REQUEST['insertar'])) {
 
-//    $ruta = anadirFicheroaLaCarpeta($_REQUEST['']);
+    $ruta = anadirFicheroaLaCarpeta('caratula');
 
-    echo "<h1>" . $_REQUEST['caratula'] . "</h1>";
 
-//    $insertar = $pdo->prepare("INSERT INTO video(Titulo,Genero,Any,Precio) VALUES (:titulo, :genero, :any , :precio)");
-//
-//
-//    $insertar->bindParam(':titulo', $_REQUEST['titulo']);
-//    $insertar->bindParam(':genero', $_REQUEST['genero']);
-//    $insertar->bindParam(':any', $_REQUEST['any']);
-//    $insertar->bindParam(':precio', $_REQUEST['precio']);
-//    $insertar->bindParam(':caratula', $ruta);
+    $insertar = $pdo->prepare("INSERT INTO video(Titulo,Genero,Any,Precio) VALUES (:titulo, :genero, :any , :precio)");
 
-//    executeVar($insertar);
 
-//    redirect();
+    $insertar->bindParam(':titulo', $_REQUEST['titulo']);
+    $insertar->bindParam(':genero', $_REQUEST['genero']);
+    $insertar->bindParam(':any', $_REQUEST['any']);
+    $insertar->bindParam(':precio', $_REQUEST['precio']);
+    $insertar->bindParam(':caratula', $ruta);
+
+    executeVar($insertar);
+
+    redirect();
+}
+
+
+
+
+function anadirFicheroaLaCarpeta($fichero) {
+    if (is_uploaded_file($_FILES[$fichero]['tmp_name'])) {
+        $nombreDirectorio = "/opt/lampp/htdocs/Curso2023-2024/PHP+SQL/peliculas/imagenes/";
+        $nombreFichero = $_FILES[$fichero]['name'];
+        move_uploaded_file($_FILES[$fichero]['tmp_name'], $nombreDirectorio . $nombreFichero);
+        return "/Curso2023-2024/PHP+SQL/peliculas/imagenes/" . $nombreFichero;
+    } else {
+        return "sin ruta especificada";
+    }
 }
 ?>
 </body>
