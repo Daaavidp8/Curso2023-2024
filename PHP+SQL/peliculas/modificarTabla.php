@@ -101,7 +101,7 @@ if (isset($_REQUEST['borrar'])) {
     $ruta = anadirFicheroaLaCarpeta('caratula');
 
 
-    $insertar = $pdo->prepare("INSERT INTO video(Titulo,Genero,Any,Precio) VALUES (:titulo, :genero, :any , :precio)");
+    $insertar = $pdo->prepare("INSERT INTO video(Titulo,Genero,Any,Precio,imagen) VALUES (:titulo, :genero, :any , :precio, :caratula)");
 
 
     $insertar->bindParam(':titulo', $_REQUEST['titulo']);
