@@ -93,7 +93,7 @@ if (isset($_REQUEST['borrar'])) {
                     </span>
                 </label>
             </div>
-            <button type="submit" class="btn btn-primary" name="modificarDatabase">Modificar</button>
+            <button type="submit" class="btn btn-primary" name="modificarDatabase">Guardar Cambios</button>
         </form>
     </div>
 <?php } elseif (isset($_REQUEST['insertar'])) {
