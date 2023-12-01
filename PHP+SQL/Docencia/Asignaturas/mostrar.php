@@ -9,7 +9,7 @@
 <body class="container mt-5">
 <?php
 include_once "Asignaturas.php";
-ini_set("display_errors",1);
+include "../inc/login.inc";
 
 try {
     $asignaturas = new Asignaturas();

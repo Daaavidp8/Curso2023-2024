@@ -9,7 +9,8 @@
 <body class="container mt-5">
 
 <?php
-ini_set("display_errors",1);
+include "../inc/login.inc";
+
 require_once 'profesores.php';
 try {
     $profesores = new Profesores();

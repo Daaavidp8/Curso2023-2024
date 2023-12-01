@@ -9,7 +9,7 @@
 
 <body class="container mt-5">
 <?php
-ini_set("display_errors", 1);
+include "../inc/login.inc";
 require_once 'Imparte.php';
 require_once '../Profesores/profesores.php';
 require_once '../Asignaturas/Asignaturas.php';
